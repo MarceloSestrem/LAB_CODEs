@@ -1,4 +1,4 @@
-//% weight=10  color=#0F8AAE icon="\uf067" block="Projeto <Lab_Code>"
+//% weight=10  color=#0F8AAE icon="\uf067" block="<Lab_Code>"
 namespace lab_code {
     let gesture_first_init = true
     const initRegisterArray: number[] = [
