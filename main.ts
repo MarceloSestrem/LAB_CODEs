@@ -1487,10 +1487,6 @@ namespace labcode {
         let vAltitude: number = vAlt4 / -9.8;
         return Math.roundWithPrecision(vAltitude, 2)
     }
-
-}
-
-namespace smbus {
     export function writeByte(addr: number, register: number, value: number): void {
         let temp = pins.createBuffer(2);
         temp[0] = register;
