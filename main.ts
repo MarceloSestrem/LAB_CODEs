@@ -1,4 +1,4 @@
-//% weight=10  color=#0F8AAE icon="\uf067" block="Sensores Lab_Code"
+//% weight=10  color=#0F8AAE icon="\uf067" block="Projeto <Lab_Code>"
 namespace lab_code {
     let gesture_first_init = true
     const initRegisterArray: number[] = [
@@ -158,72 +158,7 @@ namespace lab_code {
     export let grovegestureinit = 0;
 
 
-    /**
-     * get distance from Grove ultrasonic range sensor [cm|inch]
-     * @param pin Input pin
-     */
-    //% blockId=RobotDriverultrasonic_cm 
-    //% block="ultrasonic ranger pin |%name| distance in %Unit"
-    //% name.fieldEditor="gridpicker" 
-    //% name.fieldOptions.columns=5
-    //% name.fieldOptions.tooltips="false"
-    //% name.fieldOptions.width="0"
-    //% group="Digital" 
-    export function measureDistance(name: DigitalPin, Unit: DistanceUnit): number {
-        let duration = 0;
-        let distance = 0;
-        let distanceBackup = 0;
-        pins.digitalWritePin(name, 0); //make sure pin is low
-        control.waitMicros(2);
-        pins.digitalWritePin(name, 1); //send echo
-        control.waitMicros(10);
-        pins.digitalWritePin(name, 0);
-
-        duration = pins.pulseIn(name, PulseValue.High, 50000); // Max duration 50 ms - receive echo
-
-        if (Unit == DistanceUnit.cm) distance = duration * 153 / 58 / 100;
-        else distance = duration * 153 / 148 / 100;
-
-        if (distance > 0) distanceBackup = distance;
-        else distance = distanceBackup;
-        basic.pause(50);
-
-        return Math.roundWithPrecision(distance, 4);
-    }
-
-    /**
-     * get distance from Grove ultrasonic range sensor [cm|inch]
-     * @param pin Input pin
-     */
-    //% blockId=RobotDriverultrasonic_cm_v2 
-    //% block="(v2) ultrasonic ranger pin |%name| distance in %Unit"
-    //% name.fieldEditor="gridpicker" 
-    //% name.fieldOptions.columns=5
-    //% name.fieldOptions.tooltips="false"
-    //% name.fieldOptions.width="0"
-    //% group="Digital" 
-    export function measureDistance_v2(name: DigitalPin, Unit: DistanceUnit): number {
-        let duration = 0;
-        let distance = 0;
-        let distanceBackup = 0;
-        pins.digitalWritePin(name, 0); //make sure pin is low
-        control.waitMicros(2);
-        pins.digitalWritePin(name, 1); //send echo
-        control.waitMicros(10);
-        pins.digitalWritePin(name, 0);
-
-        duration = pins.pulseIn(name, PulseValue.High, 50000); // Max duration 50 ms - receive echo
-
-        if (Unit == DistanceUnit.cm) distance = duration * 153 / 88 / 100;
-        else distance = duration * 153 / 226 / 100;
-
-        if (distance > 0) distanceBackup = distance;
-        else distance = distanceBackup;
-        basic.pause(50);
-
-        return Math.roundWithPrecision(distance, 4);
-    }
-
+    
     /**
      * get distance from ultrasonic range sensor (HC-SR04) [cm|inch|μs]
      * @param trig tigger pin
@@ -232,9 +167,9 @@ namespace lab_code {
      * @param maxCmDistance maximum distance in centimeters (default is 500)
      */
     //% blockId=ultrasonicsonar 
-    //% block="(HC-SR04) ultrasonic pin |trig %trig|echo %echo|unit %unit"
-    //% trig.defl=DigitalPin.P13
-    //% echo.defl=DigitalPin.P14
+    //% block="(HC-SR04) Sensor ultrassõnico |trig %trig|echo %echo| em %unit"
+    //% trig.defl=DigitalPin.P12
+    //% echo.defl=DigitalPin.P13
     //% name.fieldEditor="gridpicker" 
     //% name.fieldOptions.columns=5
     //% name.fieldOptions.tooltips="false"
@@ -264,7 +199,7 @@ namespace lab_code {
      * Get line finder sensor state [0-1]
     */
     //% blockId=hackbitLineFinderRead
-    //% block="pin |%pin| line finder is seeing black. Reverse action |$reverseAction|"
+    //% block="pin |%pin|Sensor de linha Preta ou branca |$reverseAction|"
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
     //% group="Digital" 
@@ -290,7 +225,7 @@ namespace lab_code {
      * Get collision sensor state [0-1]
     */
     //% blockId=hackbitCollisionRead
-    //% block="collision sensor pin |%pin| activated"
+    //% block="Sensor de Colisão |%pin| ativado"
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
     //% group="Digital" 
@@ -302,7 +237,7 @@ namespace lab_code {
      * Get water sensor state [0-1]
     */
     //% blockId=hackbitWaterRead
-    //% block="water sensor pin |%pin| detects water"
+    //% block="Sensor detector de água |%pin|"
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
     //% group="Digital" 
@@ -314,7 +249,7 @@ namespace lab_code {
      * Get Magnetic Switch state [0-1]
     */
     //% blockId=hackbitMagneticSwitchRead
-    //% block="magnetic switch pin |%pin| activated"
+    //% block="interruptor magnético |%pin| ativado"
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
     //% group="Digital" 
