@@ -1,5 +1,5 @@
-//% weight=10 color=#0F8AAE icon="\e674" block="Sensores Lab_Code"
-namespace labcode {
+//% weight=10  color=#e7660b icon="\uf1b9" block="Sensores Lab_Code"
+namespace lab_code {
     let gesture_first_init = true
     const initRegisterArray: number[] = [
         0xEF, 0x00, 0x32, 0x29, 0x33, 0x01, 0x34, 0x00, 0x35, 0x01, 0x36, 0x00, 0x37, 0x07, 0x38, 0x17,
@@ -1487,6 +1487,10 @@ namespace labcode {
         let vAltitude: number = vAlt4 / -9.8;
         return Math.roundWithPrecision(vAltitude, 2)
     }
+
+}
+
+namespace smbus {
     export function writeByte(addr: number, register: number, value: number): void {
         let temp = pins.createBuffer(2);
         temp[0] = register;
